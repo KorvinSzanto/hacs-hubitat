@@ -23,6 +23,7 @@ from homeassistant.components.sensor import (
     DEVICE_CLASS_POWER,
     DEVICE_CLASS_PRESSURE,
     DEVICE_CLASS_TEMPERATURE,
+    STATE_CLASS_MEASUREMENT,
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import (
@@ -57,11 +58,17 @@ class HubitatSensor(HubitatEntity):
     _attribute_name: Optional[str]
     _units: str
     _device_class: Optional[str]
+    _state_class: Optional[str]
 
     @property
     def device_class(self) -> Optional[str]:
         """Return this sensor's device class."""
         return self._device_class
+
+    @property
+    def state_class(self) -> Optional[str]:
+        """Return this sensor's state class."""
+        return self._state_class
 
     @property
     def name(self) -> str:
@@ -108,7 +115,6 @@ class HubitatBatterySensor(HubitatSensor):
         self._units = "%"
         self._device_class = DEVICE_CLASS_BATTERY
 
-
 class HubitatHumiditySensor(HubitatSensor):
     """A humidity sensor."""
 
@@ -140,6 +146,7 @@ class HubitatPowerSensor(HubitatSensor):
         self._attribute = ATTR_POWER
         self._units = POWER_WATT
         self._device_class = DEVICE_CLASS_POWER
+        self._state_class = STATE_CLASS_MEASUREMENT
 
 
 class HubitatPowerSourceSensor(HubitatSensor):
