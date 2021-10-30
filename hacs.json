@@ -1,5 +1,5 @@
 {
-	"name": "Hubitat",
+	"name": "Hubitat (Custom)",
 	"domains": [
 		"binary_sensor",
 		"climate",
