@@ -24,6 +24,7 @@ from homeassistant.components.sensor import (
     DEVICE_CLASS_PRESSURE,
     DEVICE_CLASS_TEMPERATURE,
     STATE_CLASS_MEASUREMENT,
+    SensorEntity,
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import (
@@ -51,7 +52,7 @@ from .types import EntityAdder
 _LOGGER = getLogger(__name__)
 
 
-class HubitatSensor(HubitatEntity):
+class HubitatSensor(HubitatEntity, SensorEntity):
     """A generic Hubitat sensor."""
 
     _attribute: str
